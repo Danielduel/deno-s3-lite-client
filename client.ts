@@ -266,6 +266,13 @@ export class Client {
           date,
         }),
       );
+    } else {
+      if (this.sessionToken) {
+        headers.set(
+          "Authorization",
+          `Bearer ${this.sessionToken}`,
+        );
+      }
     }
 
     const fullUrl = `${this.protocol}//${host}${path}`;
