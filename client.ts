@@ -33,6 +33,7 @@ export interface ClientOptions {
  * See https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
  */
 const metadataKeys = [
+  "Authorization",
   "Content-Type",
   "Cache-Control",
   "Content-Disposition",
@@ -254,7 +255,7 @@ export class Client {
         headers.set("x-amz-security-token", this.sessionToken);
       }
       headers.set(
-        "authorization",
+        "Authorization",
         await signV4({
           headers,
           method,
